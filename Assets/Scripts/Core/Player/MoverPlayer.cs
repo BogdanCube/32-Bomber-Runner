@@ -7,6 +7,7 @@ namespace Core.Player
 {
     public class MoverPlayer : MonoBehaviour
     {
+        [SerializeField] private float _horizontalSpeed = 2;
         [SerializeField] private float _speed = 5;
         [SerializeField] private NavMeshAgent _agent;
         private bool _isStop;
@@ -14,7 +15,7 @@ namespace Core.Player
         {
             if(_isStop) return;
             
-            var moveVector = new Vector3(horizontal, 0, 1);
+            var moveVector = new Vector3(horizontal * _horizontalSpeed, 0, 1);
             _agent.Move(moveVector * (_speed * Time.deltaTime));
         }
 

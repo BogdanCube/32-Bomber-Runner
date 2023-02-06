@@ -436,7 +436,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.12834764, g: 1, b: 0, a: 0.9019608}
+      maxColor: {r: 0.21750008, g: 0, b: 0.39, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -1505,7 +1505,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -5111,7 +5111,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.12834764, g: 1, b: 0, a: 0.9019608}
+      maxColor: {r: 0.22745098, g: 0, b: 0.40784314, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -6180,7 +6180,7 @@ ParticleSystem:
         m_RotationOrder: 4
     separateAxes: 0
   ColorModule:
-    enabled: 1
+    enabled: 0
     gradient:
       serializedVersion: 2
       minMaxState: 1
@@ -10032,6 +10032,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2961df226a14e8fb6168db78127012d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rotation: {x: 0, y: 180, z: 0}
 --- !u!1 &7565637770194209315
 GameObject:
   m_ObjectHideFlags: 0

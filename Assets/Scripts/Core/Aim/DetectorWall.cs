@@ -1,11 +1,11 @@
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.UI;
 
 namespace Core.Aim
 {
     public class DetectorWall : MonoBehaviour
     {
-        [SerializeField] private MeshRenderer _renderer;
+        [SerializeField] private Image _image;
         private Wall _wall;
         public bool TryGetWall => _wall != null;
 
@@ -13,7 +13,7 @@ namespace Core.Aim
         {
             if (other.TryGetComponent(out Wall wall))
             {
-                _renderer.material.color = Color.green;
+                _image.color = Color.green;
                 _wall = wall;
             }
         }
@@ -22,7 +22,7 @@ namespace Core.Aim
         {
             if (other.TryGetComponent(out Wall wall))
             {
-                _renderer.material.color = Color.white;
+                _image.color = Color.white;
                 _wall = null;
             }
         }
@@ -31,7 +31,7 @@ namespace Core.Aim
         {
             var temp = _wall;
             _wall = null;
-            _renderer.material.color = Color.white;
+            _image.color = Color.white;
             return temp;
         }
     }

@@ -1,9 +1,7 @@
-using System;
 using Base;
 using Core.Player;
 using Toolkit.Extensions;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Core.Aim
 {
@@ -12,9 +10,10 @@ namespace Core.Aim
         [SerializeField] private InputService _input;
         [SerializeField] private DetectorWall _detector;
         [SerializeField] private BombPlayer _player;
+        [SerializeField] private MoverAim _mover;
         [SerializeField] private Transform _startPoint;
         [SerializeField] private Transform _model;
-        private bool _isActive = false;
+        private bool _isActive;
         #region Enable / Disable
 
         private void OnEnable()
@@ -38,8 +37,8 @@ namespace Core.Aim
         private void TurnOn()
         {
             if (_isActive) return;
-            
-            transform.position = _startPoint.position;
+
+            _mover.SetStartPosition(_startPoint.position);
             _isActive = true;
             _model.Activate();
 

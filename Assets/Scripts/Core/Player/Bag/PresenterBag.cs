@@ -1,7 +1,4 @@
-using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
-using AutoLayout3D;
 using UnityEngine;
 
 namespace Core.Player.Bag
@@ -9,10 +6,10 @@ namespace Core.Player.Bag
     public class PresenterBag : MonoBehaviour
     {
         [SerializeField] private Bag _bag;
-        [SerializeField] private float _duration = 0.1f;
-        [SerializeField] private LayoutElement3D _prefab;
+        [SerializeField] private GameObject _prefab;
         [SerializeField] private Transform _parent;
-        private readonly List<LayoutElement3D> _bricks = new();
+        [SerializeField] private float _offset;
+        private readonly List<GameObject> _bricks = new();
 
         #region Enable / Disable
 
@@ -27,7 +24,7 @@ namespace Core.Player.Bag
         }
 
         #endregion
-        private async void UpdateCount(int count)
+        private void UpdateCount(int count)
         {
             if (count > _bricks.Count)
             {
@@ -35,7 +32,6 @@ namespace Core.Player.Bag
                 for (var i = 0; i < difference; i++)
                 {
                     AddBrick();
-                    await Task.Delay(TimeSpan.FromSeconds(_duration));
                 }
             }
             else
@@ -44,7 +40,6 @@ namespace Core.Player.Bag
                 for (var i = 0; i < difference; i++)
                 {
                     RemoveBlock();
-                    await Task.Delay(TimeSpan.FromSeconds(_duration));
                 }
             }
         }
@@ -52,6 +47,7 @@ namespace Core.Player.Bag
         private void AddBrick()
         {
             var block = Instantiate(_prefab, _parent);
+            block.transform.localPosition = GetNextHeight();
             _bricks.Add(block);
         }
         private void RemoveBlock()
@@ -60,6 +56,11 @@ namespace Core.Player.Bag
             var brick = _bricks[^1];
             _bricks.Remove(brick);
             Destroy(brick.gameObject);
+        }
+        private Vector3 GetNextHeight()
+        {
+            var height = _bricks.Count * _offset + _offset;
+            return new Vector3(0, height, 0);
         }
     }
 }

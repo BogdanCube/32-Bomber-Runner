@@ -1,6 +1,4 @@
-using System;
 using DG.Tweening;
-using NaughtyAttributes;
 using Toolkit.Extensions;
 using UnityEngine;
 
@@ -8,10 +6,13 @@ namespace Core.Player
 {
     public class BombPlayer : MonoBehaviour
     {
+        [SerializeField] private Color _standartColor;
+        [SerializeField] private Color _bombColor;
         [SerializeField] private Bomb _bomb;
         [SerializeField] private Bag.Bag _bag;
         [SerializeField] private SkinnedMeshRenderer _renderer;
         [SerializeField] private AnimationPlayer _animation;
+        [SerializeField] private ParticleSystem _particle;
         public bool IsExplosion { get; private set; }
         public bool HasBomb { get; private set; }
 
@@ -34,7 +35,8 @@ namespace Core.Player
             {
                 HasBomb = true;
                 boost.Deactivate();
-                _renderer.material.DOColor(Color.red,1f);
+                _particle.Activate();
+                _renderer.material.DOColor(_bombColor,1f);
             }
         }
         public void ExplosionWall(Transform wall)
@@ -50,7 +52,7 @@ namespace Core.Player
         {
             if (IsExplosion)
             {
-                _renderer.material.DOColor(Color.white,1f);
+                _renderer.material.color = _standartColor;
                 IsExplosion = false;
             }
         }

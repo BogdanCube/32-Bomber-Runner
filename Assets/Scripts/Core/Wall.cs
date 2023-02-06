@@ -1,10 +1,8 @@
 using System;
 using System.Threading.Tasks;
 using Core.Player.Bag;
-using DG.Tweening;
 using Toolkit.Extensions;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Core

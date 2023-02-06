@@ -1,5 +1,3 @@
-using System;
-using Core.Player;
 using Core.Player.Bag;
 using DG.Tweening;
 using Toolkit.Extensions;

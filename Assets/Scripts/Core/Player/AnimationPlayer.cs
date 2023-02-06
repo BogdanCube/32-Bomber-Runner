@@ -11,6 +11,7 @@ namespace Core.Player
         private readonly int _runningNameId = Animator.StringToHash("IsRunning");
         private readonly int _deathNameId = Animator.StringToHash("Death");
         private readonly int _attackNameId = Animator.StringToHash("Attack");
+        private readonly int _idleNameId = Animator.StringToHash("Idle");
         private bool _isRunning;
 
         public bool IsRunning
@@ -29,5 +30,8 @@ namespace Core.Player
             _animator.SetTrigger("Death");
         public void SetAttack() => 
             _animator.SetTrigger("Attack");
+
+        public void SetIdle() =>
+            IsRunning = false;
     }
 }
